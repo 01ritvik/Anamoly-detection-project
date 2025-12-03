@@ -19,9 +19,6 @@ from src.cleaning.cleaning_functions import (
     clean_transactions
 )
 
-# -----------------------------
-# Load datasets
-# -----------------------------
 DATA_PATH = "data/"
 
 datasets = {
@@ -32,7 +29,6 @@ datasets = {
     "marketing_source": pd.read_csv(f"/Users/gritv/Desktop/projects /data/marketing_source.csv")
 }
 
-# Expected schema
 expected_schema = {
     "visitor_events": {
         "event_id": "object",
@@ -80,9 +76,6 @@ expected_schema = {
     }
 }
 
-# -----------------------------
-# TDQ RUNNER FUNCTION
-# -----------------------------
 def run_tdq(datasets):
 
     tdq_results = []
@@ -119,17 +112,10 @@ def run_tdq(datasets):
 
     return pd.DataFrame(tdq_results)
 
-
-# -----------------------------
-# EXECUTION
-# -----------------------------
-
-# TDQ BEFORE CLEANING
 tdq_raw = run_tdq(datasets)
 tdq_raw.to_csv(f"{DATA_PATH}/tdq_raw.csv", index=False)
 print("✓ Saved TDQ raw report")
 
-# CLEAN DATA
 cleaned_data = {
     "visitor_events": clean_visitor_events(datasets["visitor_events"]),
     "applications": clean_applications(datasets["applications"]),
@@ -138,7 +124,6 @@ cleaned_data = {
     "marketing_source": datasets["marketing_source"]
 }
 
-# TDQ AFTER CLEANING
 tdq_clean = run_tdq(cleaned_data)
 tdq_clean.to_csv(f"{DATA_PATH}/tdq_clean.csv", index=False)
 print("✓ Saved TDQ cleaned report")
