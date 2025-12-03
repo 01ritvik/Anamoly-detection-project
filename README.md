@@ -11,4 +11,4 @@ C --> D[Business Data Quality (BDQ)<br>- Visitor → Application Mapping<br>- Ap
 
 D --> E[ML Anomaly Detection<br>- Time-Series Anomalies<br>- Row-Level Outliers]
 
-E --> F[Reports & Dashboards<br>TDQ/BDQ Reports<br>Anomaly Visualizations<br>Interactive Notebooks]
+E --> F[Reports & Dashboards<br>TDQ/BDQ Reports<br>Anomaly Visualizations]
