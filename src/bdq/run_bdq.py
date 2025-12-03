@@ -12,18 +12,13 @@ from src.bdq.bdq_checks import (
     check_marketing_sources
 )
 
-# -------------------------
-# Load CLEANED data
-# -------------------------
 visitor = pd.read_csv("data/cleaned_visitor_events.csv")
 applications = pd.read_csv("data/cleaned_applications.csv")
 accounts = pd.read_csv("data/cleaned_accounts.csv")
 transactions = pd.read_csv("data/cleaned_transactions.csv")
 marketing = pd.read_csv("data/marketing_source.csv")
 
-# -------------------------
-# Run BDQ Checks
-# -------------------------
+
 bdq_results = []
 
 bdq_results.append({
@@ -76,14 +71,8 @@ bdq_results.append({
     "num_issues": check_marketing_sources(visitor, marketing)
 })
 
-# -------------------------
-# Convert to DataFrame
-# -------------------------
 bdq_df = pd.DataFrame(bdq_results)
 print(bdq_df)
 
-# -------------------------
-# Save report
-# -------------------------
 bdq_df.to_csv("data/bdq_report.csv", index=False)
-print("\n✓ BDQ report saved to data/bdq_report.csv")
+print("\n✓ BDQ report saved")
